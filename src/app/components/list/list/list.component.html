@@ -1,0 +1,11 @@
+<table cdk-table [dataSource]="data">
+  <ng-container *ngFor="let meta of metadata" [cdkColumnDef]="meta.field">
+    <th cdk-header-cell *cdkHeaderCellDef> {{meta.header}} </th>
+    <td cdk-cell *cdkCellDef="let row">
+      {{ row[meta.field]|listFormatter:row:meta.formatter }}
+    </td>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="fields"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: fields;"></tr>
+</table>
