@@ -1,0 +1,15 @@
+:host {
+  &.sortable {
+    cursor: pointer;
+
+    .asc:before {
+      content: '\2191';
+    }
+
+    .desc:before {
+      content: '\2193';
+    }
+  }
+}
+
+

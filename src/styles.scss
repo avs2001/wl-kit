@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+.kbm-table {
+  width: 100%;
+  border-collapse: collapse;
+  th,td{
+    padding: 10px;
+  }
+
+  th {
+    border-bottom: 2px solid gray;
+    text-align: left;
+  }
+
+  tr {
+    td {
+      border-bottom: 1px solid gray;
+    }
+
+    &:last-child {
+      td {
+        border: none;
+      }
+    }
+  }
+}
