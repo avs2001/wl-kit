@@ -1,3 +1,4 @@
+<kbm-search></kbm-search>
 <kbm-list [data]="users" [metadata]="fieldsMetadata" (sort)="sortData = $event"></kbm-list>
 <pre>{{sortData | json}}</pre>
 <ul (kbmSort)="sort($event)">

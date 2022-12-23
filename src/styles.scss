@@ -1,25 +1,138 @@
 /* You can add global styles to this file, and also import other style files */
-.kbm-table {
+:root {
+  --main-color: #153254;
+  --main-bg-color: #F0F3F8;
+  --sub-main-color: #28486D;
+  --light-color: #8BA3BE;
+  --list-border-color: #D8E0EE;
+}
+
+* {
+  font-family: 'Poppins' !important;
+  font-size: 16px;
+}
+
+table.kbm-table {
+  /* Change these properties */
+  --border: 1px solid var(--list-border-color);
+  border-radius: 24px;
+  background-color: white;
+
+  /* Don't change these properties */
+  border-spacing: 0;
+  border-collapse: separate;
+  border: var(--border);
+  overflow: hidden;
+}
+
+table.kbm-table tr,
+table.kbm-table th,
+table.kbm-table td {
+  border-right: 0;
+  border-bottom: 1px solid var(--list-border-color);
+}
+
+table.kbm-table tr:last-child>td {
+  border-bottom: 0;
+}
+
+/* Apply a border to the bottom of all but the last row */
+table.kbm-table>thead>tr:not(:last-child)>th,
+table.kbm-table>thead>tr:not(:last-child)>td,
+table.kbm-table>tbody>tr:not(:last-child)>th,
+table.kbm-table>tbody>tr:not(:last-child)>td,
+table.kbm-table>tfoot>tr:not(:last-child)>th,
+table.kbm-table>tfoot>tr:not(:last-child)>td,
+table.kbm-table>tr:not(:last-child)>td,
+table.kbm-table>tr:not(:last-child)>th,
+table.kbm-table>thead:not(:last-child),
+table.kbm-table>tbody:not(:last-child),
+table.kbm-table>tfoot:not(:last-child) {
+  border-bottom: var(--border);
+}
+
+table.kbm-table th {
+  padding: 20px;
+}
+
+table.kbm-table td {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+table.kbm-table th {
+  text-align: left;
+  color: var(--light-color);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+table.kbm-table tr {
+  color: var(--main-color);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+table.kbm-table td.list-main-column {
+  color: var(--main-color);
+  font-weight: 700;
+}
+
+.cdk-row:nth-child(even) {
+  background-color: var(--main-bg-color);
+}
+
+.cdk-row:hover .cdk-cell {
+  background-color: var(--main-color);
+  color: white !important;
+
+}
+
+.list-header-horizontal {
   width: 100%;
-  border-collapse: collapse;
-  th,td{
-    padding: 10px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  th {
-    border-bottom: 2px solid gray;
-    text-align: left;
-  }
+.list-footer {
+  font-weight: 500;
+  align-items: center;
+  color: var(--light-color);
+}
 
-  tr {
-    td {
-      border-bottom: 1px solid gray;
-    }
+.list-footer-left {
+  display: flex;
+}
 
-    &:last-child {
-      td {
-        border: none;
-      }
-    }
-  }
+.f-s-12 {
+  font-size: 12px !important;
+}
+
+.items-per-page {
+  font-size: 12px !important;
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+ngb-pagination ul>li:not(.active)>a {
+  color: var(--light-color) !important;
+}
+
+ngb-pagination ul>li.active>a {
+  background-color: white !important;
+  font-weight: bold !important;
+  color: var(--main-color) !important;
+}
+
+ngb-pagination ul>li>a {
+  border-color: transparent !important;
+  font-size: 12px !important;
+
+}
+
+ngb-pagination ul {
+  margin-bottom: 0 !important;
+  align-items: center !important;
 }

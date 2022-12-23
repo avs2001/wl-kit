@@ -4,6 +4,7 @@ import {AppComponent} from "./app.component";
 import {ListComponent} from "./components/list/list/list.component";
 import {SortableComponent} from "./components/sort/sortable/sortable.component";
 import {SortDirective} from "./components/sort/sort.directive";
+import { SearchInputComponent } from './components/custom-form-inputs/search/search.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {SortDirective} from "./components/sort/sort.directive";
     BrowserModule,
     ListComponent,
     SortableComponent,
-    SortDirective
+    SortDirective,
+    SearchInputComponent
   ],
 
   providers: [],
