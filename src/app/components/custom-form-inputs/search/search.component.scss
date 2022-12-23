@@ -22,3 +22,7 @@
   border-color: var(--list-border-color);
   width: 260px;
 }
+
+::placeholder {
+  color: var(--light-color);
+}

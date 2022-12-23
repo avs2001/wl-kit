@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
-import {Component, OnInit, OnDestroy, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import { Component, OnInit, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
-import {ReplaySubject, Subscription} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
+import { ReplaySubject, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-    selector: 'kbm-search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.scss'],
-    standalone: true,
-    imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  selector: 'kbm-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 
   providers: [
     {
@@ -21,6 +21,7 @@ import {debounceTime} from 'rxjs/operators';
   ]
 })
 export class SearchInputComponent implements ControlValueAccessor, OnInit {
+  @Input() co!: any
 
   onChange: any;
   onTouch: any;
@@ -43,6 +44,7 @@ export class SearchInputComponent implements ControlValueAccessor, OnInit {
   }
   subscriptions: Subscription[] = [];
   ngOnInit() {
+    console.log(this.co);
     this.subscriptions.push(
       this.input
         .pipe(

@@ -27,4 +27,8 @@ export class ListComponent<T> {
   get fields() {
     return this.metadata.map(({field}) => field)
   }
+
+  ngOnInit() {
+
+  }
 }

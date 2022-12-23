@@ -1,9 +1,13 @@
-<kbm-search></kbm-search>
-<kbm-list [data]="users" [metadata]="fieldsMetadata" (sort)="sortData = $event"></kbm-list>
-<pre>{{sortData | json}}</pre>
-<ul (kbmSort)="sort($event)">
-  <li kbm-sortable="foo">foo</li>
-  <li>bar</li>
-  <li kbm-sortable="baz">baz</li>
-</ul>
+<div class="list">
+  <kbm-search [formControl]="searchUsersControl" appSearch [searchFields]="usersSearchFields" [items]='users'
+    (filterEvent)='filterUsers($event)'></kbm-search>
+  <kbm-list [data]="filteredUsers" [metadata]="usersFieldsMetadata" (sort)="sortData = $event"></kbm-list>
+</div>
 
+<div class="list">
+  <kbm-search [formControl]="searchTenantsControl" appSearch [searchFields]="tenanciesSearchFields" [items]='tenancies'
+    (filterEvent)='filterTenancies($event)'></kbm-search>
+  <kbm-list [data]="filteredTenancies" [metadata]="tenanciesFieldsMetadata" (sort)="sortData = $event"></kbm-list>
+</div>
+
+<pre>{{sortData | json}}</pre>
