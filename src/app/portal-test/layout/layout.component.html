@@ -1,0 +1,15 @@
+<kbm-drawer #drawer="drawer" [open]="true">
+    <kbm-side>
+        <ng-template let-opened>
+            <kbm-sidebar [open]="drawer.open"></kbm-sidebar>
+        </ng-template>
+    </kbm-side>
+    <kbm-content>
+        <kbm-toolbar>
+            <kbm-header></kbm-header>
+        </kbm-toolbar>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </kbm-content>
+</kbm-drawer>

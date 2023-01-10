@@ -3,7 +3,8 @@ import { SearchPipe } from './search-filter.pipe';
 
 
 @Directive({
-  selector: '[appSearch]'
+  selector: '[appSearch]',
+  standalone: true
 })
 export class SearchDirective {
   @Input() items!: Array<any>;

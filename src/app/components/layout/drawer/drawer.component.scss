@@ -1,0 +1,30 @@
+$menu-icon-width-sum: 93px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-sidenav-container.mat-sidenav-container {
+  flex: 1;
+}
+
+mat-sidenav {
+  background-color: var(--main-color);
+}
+
+mat-sidenav-content {
+  background-color: var(--main-bg-color);
+  padding: 80px 100px 80px 40px;
+}
+
+.mat-drawer {
+  visibility: visible !important;
+  display: block !important;
+  transform: translate3d(calc($menu-icon-width-sum - 100%), 0, 0);
+}
+
+.mat-drawer-content {
+  margin-left: $menu-icon-width-sum;
+}

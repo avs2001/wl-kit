@@ -1,0 +1,16 @@
+<mat-nav-list>
+  <mat-list-item class="m-h-70" (click)="open = !open">
+    <div class="item logo-item">
+      <img *ngIf="open" class="logo" [src]="clientLogoIcon">
+      <img [class.rotate-180]="!open" class="item-img" src="/assets/icons/sidenav-close.svg">
+    </div>
+  </mat-list-item>
+  <ng-container *ngFor="let navigationItem of navigationItems">
+    <mat-list-item [kbmActiveRoute]="getNavigationRoute(navigationItem)" [class]="navigationItem.matListItemExtraClass?.join(' ')" (click)="navigationItem.action()">
+      <div class="item">
+        <img class="item-img" [src]="navigationItem.icon">
+        <div class="item-txt" mat-line *ngIf="open">{{navigationItem.txt}}</div>
+      </div>
+    </mat-list-item>
+  </ng-container>
+</mat-nav-list>

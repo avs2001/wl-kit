@@ -21,8 +21,6 @@ import { debounceTime } from 'rxjs/operators';
   ]
 })
 export class SearchInputComponent implements ControlValueAccessor, OnInit {
-  @Input() co!: any
-
   onChange: any;
   onTouch: any;
   registerOnChange(fn: any): void {
@@ -44,7 +42,6 @@ export class SearchInputComponent implements ControlValueAccessor, OnInit {
   }
   subscriptions: Subscription[] = [];
   ngOnInit() {
-    console.log(this.co);
     this.subscriptions.push(
       this.input
         .pipe(
