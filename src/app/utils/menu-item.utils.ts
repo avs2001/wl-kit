@@ -27,7 +27,8 @@ export class RouterMenuItem implements MenuItem {
         }
     }
 
-    action(): void {
+    action(event: any): void {
+        event.stopPropagation()
         this.router.navigateByUrl(this.navigationRoute);
     }
 }

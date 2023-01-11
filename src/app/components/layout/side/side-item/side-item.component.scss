@@ -10,6 +10,10 @@ mat-list-item {
     }
 }
 
+.list-item {
+    display: flex;
+}
+
 .item {
     display: flex;
     align-items: center;
@@ -51,4 +55,18 @@ mat-list-item {
 
 .rotate-180 {
     transform: rotate(180deg);
+}
+
+.show {
+    position: absolute;
+    right: 10px;
+    padding: 10px;
+    margin-top: 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: var(--light-color);
+    }
 }

@@ -15,6 +15,7 @@ export class SideItemComponent {
   @Input() navigationItems!: MenuItem[];
   @Input() open!: boolean;
   @Input() margin: number = 0;
+  show: boolean = false;
 
   ngOnInit() {
     console.log(this.margin)
@@ -27,6 +28,11 @@ export class SideItemComponent {
   getNavigationRoute(navigationItem: MenuItem) {
     let navigationRoute = (navigationItem as RouterMenuItem).navigationRoute
     return navigationRoute ? navigationRoute : 'no-navigation';
+  }
+
+  showItems(event: any) {
+    event.stopPropagation();
+    this.show = !this.show
   }
 
 }
