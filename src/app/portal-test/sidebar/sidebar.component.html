@@ -5,18 +5,6 @@
       <img [class.rotate-180]="!open" class="item-img" src="/assets/icons/sidenav-close.svg">
     </div>
   </mat-list-item>
-  <ng-container *ngFor="let navigationItem of navigationItems">
-    <mat-list-item [kbmActiveRoute]="getNavigationRoute(navigationItem)"
-      [class]="navigationItem.matListItemExtraClass?.join(' ')" (click)="navigationItem.action()">
-      <div class="item">
-        <img class="item-img" [src]="navigationItem.icon">
-        <div class="item-txt" mat-line *ngIf="open">{{navigationItem.txt}}</div>
-      </div>
-    </mat-list-item>
-    <mat-list style="margin-left:30px;">
-      <div *ngFor="let subItem of navigationItem.children">
-        <mat-list-item>{{ subItem.txt }}</mat-list-item>
-      </div>
-    </mat-list>
-  </ng-container>
 </mat-nav-list>
+
+<kbm-side-item [navigationItems]="navigationItems" [open]="open"></kbm-side-item>

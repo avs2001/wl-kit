@@ -23,7 +23,6 @@ export class ActiveRouteDirective {
 
     public ngOnInit(): void {
         this._subscription = this.router.events.subscribe(() => {
-            console.log(this.routeUrl)
             if (this.router.isActive(this.routeUrl, false)) {
                 this.renderer.addClass(
                     this.elementRef.nativeElement,

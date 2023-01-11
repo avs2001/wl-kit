@@ -13,6 +13,7 @@ import { DashboardComponent } from './portal-test/dashboard/dashboard.component'
 import { TestComponent } from './portal-test/test/test.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutComponent } from './portal-test/layout/layout.component';
+import { TestChildChildComponent } from './portal-test/test/test-child/test-child-child/test-child-child.component';
 
 
 @NgModule({

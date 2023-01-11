@@ -1,0 +1,54 @@
+$list-padding: 20px;
+
+mat-list-item {
+    cursor: pointer;
+    margin: 16px 0 !important;
+    border-radius: 12px !important;
+
+    &:hover {
+        background-color: var(--sub-main-color) !important;
+    }
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    color: white;
+
+    .item-img {
+        height: 20px;
+        height: 20px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .item-txt {
+        margin-left: 10px;
+        width: 205px
+    }
+}
+
+.item-logout {
+    border: 1px solid var(--sub-main-color);
+    position: absolute;
+    bottom: 30px;
+    width: calc(100% - $list-padding*2) // this is because of position: absolute
+}
+
+.active {
+    background-color: var(--sub-main-color);
+}
+
+.m-t-200 {
+    margin-top: 200px !important;
+}
+
+.m-h-70 {
+    min-height: 70px !important
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}

@@ -1,0 +1,12 @@
+<div [style.marginLeft]="margin+'px'">
+    <ng-container *ngFor="let navigationItem of navigationItems">
+        <mat-list-item [kbmActiveRoute]="getNavigationRoute(navigationItem)"
+            [class]="navigationItem.matListItemExtraClass?.join(' ') +' pointer'" (click)="navigationItem.action()">
+            <div class="item">
+                <img class="item-img" [src]="navigationItem.icon">
+                <div class="item-txt" mat-line *ngIf="open">{{navigationItem.txt}}</div>
+            </div>
+        </mat-list-item>
+        <kbm-side-item [navigationItems]="navigationItem.children" [margin]="margin + 10" [open]="open"></kbm-side-item>
+    </ng-container>
+</div>

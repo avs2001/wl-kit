@@ -4,7 +4,7 @@ export abstract class MenuItem {
     abstract txt: string;
     abstract icon: string;
     abstract matListItemExtraClass?: string[];
-    abstract children: RouterMenuItem[];
+    abstract children: MenuItem[];
     abstract action(args?: any): void;
 }
 
