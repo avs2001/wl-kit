@@ -1,6 +1,8 @@
-import {Directive, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges} from '@angular/core';
-import {Sortable, SortDirection, SortEvt} from "./const";
-import {Subject} from "rxjs";
+import { SortDirection, SortTableEvt } from './sort.utils';
+import { Directive, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Sortable } from "./const";
+import { Subject } from "rxjs";
+import { SortableKey } from '../list/const';
 
 @Directive({
   selector: '[kbmSort]',
@@ -8,31 +10,21 @@ import {Subject} from "rxjs";
 })
 export class SortDirective implements OnDestroy {
 
+  @Output() readonly kbmSort: EventEmitter<SortTableEvt> = new EventEmitter<SortTableEvt>();
 
-  @Input() active!: string;
-
-  @Input() direction: SortDirection = undefined;
-
-  @Output() readonly kbmSort: EventEmitter<SortEvt> = new EventEmitter<SortEvt>();
-
-
+  active!: SortableKey[];
+  direction: SortDirection = undefined;
   sortables = new Map<string, Sortable>();
-
   stateChanged = new Subject<void>();
 
-
-  register(sortable: Sortable) {
-    this.sortables.set(sortable.id, sortable);
-  }
-
   sort(sortable: Sortable) {
-    if (this.active !== sortable.id) {
-      this.active = sortable.id;
+    if (this.active !== sortable.sortableKeys) {
+      this.active = sortable.sortableKeys;
       this.direction = 'asc';
     } else {
       this.direction = this.direction === undefined ? 'asc' : (this.direction === 'desc' ? undefined : 'desc');
     }
-    this.kbmSort.next({attr: this.active, dir: this.direction});
+    this.kbmSort.next({ attr: this.active, dir: this.direction });
     this.stateChanged.next();
   }
 

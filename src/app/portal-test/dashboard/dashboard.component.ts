@@ -1,14 +1,11 @@
 import { HeaderDirective } from './../../components/layout/header/header.directive';
 import { ListComponent } from './../../components/list/list/list.component';
-import { SearchInputComponent } from './../../components/custom-form-inputs/search/search.component';
 import { DatePipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Component, inject } from '@angular/core';
 import { ListMetaData } from 'src/app/components/list/const';
-import { SortEvt } from 'src/app/components/sort/const';
-import { SearchDirective } from 'src/app/components/custom-form-inputs/search/search-filter.directive';
-import { SearchPipe } from 'src/app/components/custom-form-inputs/search/search-filter.pipe';
 import { SearchInputModule } from 'src/app/components/custom-form-inputs/search/search.module';
+import { sort, SortTableEvt } from 'src/app/components/sort/sort.utils';
 
 export interface BaseUser {
   id: number;
@@ -78,10 +75,25 @@ export class DashboardComponent {
       isActive: true,
       isPendingActivation: false,
       emailConfirmed: true,
-      lastLoginTime: new Date().getTime(),
+      lastLoginTime: new Date(1, 3, 2022).getTime(),
       isLocked: false,
       createdAt: 432432432
     },
+    {
+      id: 2,
+      firstName: 'First Name 2',
+      lastName: 'Last Name 3',
+      username: 'Username 3',
+      email: 'Email 3',
+      userType: 1,
+      phone: '+306988582965',
+      isActive: true,
+      isPendingActivation: false,
+      emailConfirmed: true,
+      lastLoginTime: new Date().getTime(),
+      isLocked: false,
+      createdAt: 432432432
+    }
   ];
   filteredUsers: BaseUser[] = [];
 
@@ -125,23 +137,36 @@ export class DashboardComponent {
     {
       field: 'name',
       header: 'Name',
-      sortable: 'name',
+      sortableKeys: [
+        'firstName',
+        {
+          name: 'lastName',
+          reverse: true
+        }
+      ],
       formatter: (data, context) => `${context.firstName} ${context.lastName}`
     },
-    { field: 'email', header: 'Email', sortable: 'email' },
-    { field: 'username', header: 'Username', sortable: 'username' },
+    {
+      field: 'email',
+      header: 'Email',
+    },
+    {
+      field: 'username',
+      header: 'Username',
+      sortableKeys: ['username']
+    },
     {
       field: 'lastLoginTime',
       header: 'Last Login',
-      sortable: 'login',
       formatter: (data) => {
         return this.datePipe.transform(data as number, 'medium');
-      }
+      },
+      sortableKeys: ['lastLoginTime']
     },
     {
       field: 'emailConfirmed',
       header: 'Email Confirmed',
-      sortable: 'emailConfirmed',
+      sortableKeys: ['emailConfirmed'],
       formatter: data => data === true ? 'Yes' : 'No'
     }
   ];
@@ -149,16 +174,15 @@ export class DashboardComponent {
     {
       field: 'name',
       header: 'Name',
-      sortable: 'name'
+      sortableKeys: ['name']
     },
     {
       field: 'active',
       header: 'Active',
-      sortable: 'active',
+      sortableKeys: ['active'],
       formatter: data => data === true ? 'Yes' : 'No'
     }
   ];
-  sortData!: SortEvt;
 
   usersSearchFields: string[] = [];
   tenanciesSearchFields: string[] = [];
@@ -183,7 +207,12 @@ export class DashboardComponent {
     this.filteredTenancies = tenancies;
   }
 
-  sort($event: any) {
-    console.log($event)
+  sortUsersData(event: any) {
+    this.filteredUsers = [...sort(this.filteredUsers, event.attr, event.dir)];
+  }
+
+  sortTenanciesData(event: any) {
+    console.log(event)
+    this.filteredTenancies = [...sort(this.filteredTenancies, event.attr, event.dir)];
   }
 }

@@ -5,7 +5,7 @@ import {CdkTableModule} from "@angular/cdk/table";
 import {ListFormatterPipe} from "../list-formatter.pipe";
 import {SortableComponent} from "../../sort/sortable/sortable.component";
 import {SortDirective} from "../../sort/sort.directive";
-import {SortEvt} from "../../sort/const";
+import { SortTableEvt } from '../../sort/sort.utils';
 
 @Component({
   selector: 'kbm-list',
@@ -22,13 +22,12 @@ export class ListComponent<T> {
   @Input()
   metadata: ReadonlyArray<ListMetaData<T>> = [];
 
-  @Output() readonly sort: EventEmitter<SortEvt> = new EventEmitter<SortEvt>();
+  @Output() readonly sort: EventEmitter<SortTableEvt> = new EventEmitter<SortTableEvt>();
 
   get fields() {
     return this.metadata.map(({field}) => field)
   }
 
   ngOnInit() {
-
   }
 }

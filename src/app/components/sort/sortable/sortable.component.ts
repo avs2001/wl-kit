@@ -11,6 +11,7 @@ import {CommonModule} from '@angular/common';
 import {Sortable} from "../const";
 import {SortDirective} from "../sort.directive";
 import {Subscription} from "rxjs";
+import { SortableKey } from '../../list/const';
 
 @Component({
   selector: '[kbm-sortable]',
@@ -23,10 +24,10 @@ import {Subscription} from "rxjs";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SortableComponent implements OnInit, OnDestroy {
+export class SortableComponent implements OnDestroy {
   private _subscription: Subscription;
   @Input('kbm-sortable')
-  @HostBinding('class.sortable') id!: string;
+  @HostBinding('class.sortable') sortableKeys!: SortableKey[];
 
   constructor(
     @Optional() private readonly _sort: SortDirective,
@@ -36,26 +37,20 @@ export class SortableComponent implements OnInit, OnDestroy {
   }
 
   get direction() {
-    if (this._sort.active === this.id) {
+    if (this._sort.active === this.sortableKeys) {
       return this._sort.direction;
     }
     return undefined;
   }
 
   get isSorted() {
-    return this._sort.active === this.id && this._sort.direction !== undefined;
+    return this._sort.active === this.sortableKeys && this._sort.direction !== undefined;
   }
 
   @HostListener('click')
   click() {
-    if (this.id) {
+    if (this.sortableKeys) {
       this._sort.sort(this);
-    }
-  }
-
-  ngOnInit(): void {
-    if (this.id) {
-      this._sort.register(this);
     }
   }
 

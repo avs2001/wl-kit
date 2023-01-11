@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { Directive, Input, ElementRef, Renderer2 } from '@angular/core';
 
@@ -6,6 +7,7 @@ import { Directive, Input, ElementRef, Renderer2 } from '@angular/core';
     standalone: true
 })
 export class ActiveRouteDirective {
+    private _subscription!: Subscription;
 
     @Input() set kbmActiveRoute(routeUrl: string) {
         this.routeUrl = routeUrl;
@@ -20,7 +22,7 @@ export class ActiveRouteDirective {
     ) { }
 
     public ngOnInit(): void {
-        this.router.events.subscribe(() => {
+        this._subscription = this.router.events.subscribe(() => {
             if (this.router.isActive(this.routeUrl, false)) {
                 this.renderer.addClass(
                     this.elementRef.nativeElement,
@@ -33,6 +35,10 @@ export class ActiveRouteDirective {
                 );
             }
         });
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
 
 }

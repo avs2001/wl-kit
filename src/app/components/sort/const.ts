@@ -1,8 +1,5 @@
-export type SortDirection = 'asc' | 'desc' | undefined;
+import { SortableKey } from "../list/const";
 
 export abstract class Sortable {
-  abstract id: string;
+  abstract sortableKeys: SortableKey[];
 }
-
-
-export type SortEvt = { attr: string; dir: SortDirection };

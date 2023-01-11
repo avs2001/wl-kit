@@ -1,6 +1,6 @@
 <table class="kbm-table" cdk-table [dataSource]="data" (kbmSort)="sort.emit($event)">
   <ng-container *ngFor="let meta of metadata" [cdkColumnDef]="meta.field">
-    <th cdk-header-cell *cdkHeaderCellDef [kbm-sortable]="meta.sortable"> {{meta.header}} </th>
+    <th cdk-header-cell *cdkHeaderCellDef [kbm-sortable]="meta.sortableKeys!"> {{meta.header}} </th>
     <td cdk-cell *cdkCellDef="let row">
       {{ row[meta.field]|listFormatter:row:meta.formatter }}
     </td>
