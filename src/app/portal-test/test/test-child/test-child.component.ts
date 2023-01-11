@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { HeaderDirective } from 'src/app/components/layout/header/header.directive';
 
 @Component({
-  selector: 'kbm-test',
+  selector: 'kbm-test-child',
   standalone: true,
   imports: [HeaderDirective],
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  templateUrl: './test-child.component.html',
+  styleUrls: ['./test-child.component.scss']
 })
-export class TestComponent {
+export class TestChildComponent {
 
 }

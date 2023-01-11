@@ -6,8 +6,12 @@ export const navigationItemsProvider = {
     provide: NAVIGATION_ITEMS,
     useFactory(router: Router) {
         return [
-            new RouterMenuItem('Dashboard', '/assets/icons/dashboard.svg', '/home', router, ['m-t-200']),
-            new RouterMenuItem('Test', '/assets/icons/tenant.svg', '/test', router),
+            new RouterMenuItem('Dashboard', '/assets/icons/dashboard.svg', '/home', router, [], ['m-t-200']),
+            new RouterMenuItem('Test', '/assets/icons/tenant.svg', '/test', router,
+                [
+                    new RouterMenuItem('Test Child 1', '/assets/icons/tenant.svg', '/test-child', router, [])
+                ]
+            ),
             new LogoutMenuItem('Logout', '/assets/icons/logout.svg', ['item-logout']),
         ];
     },
