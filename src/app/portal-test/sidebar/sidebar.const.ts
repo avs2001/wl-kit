@@ -15,6 +15,7 @@ export const navigationItemsProvider = {
                             ),
                         ]
                     ),
+                    new RouterMenuItem('Dummy - no route', '/assets/icons/tenant.svg', 'wrong', router, [])
                 ]
             ),
             new LogoutMenuItem('Logout', '/assets/icons/logout.svg', ['item-logout']),
