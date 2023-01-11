@@ -8,7 +8,7 @@ import { LayoutModule } from 'src/app/components/layout/layout.module';
 @Component({
     selector: 'kbm-layout',
     standalone: true,
-    imports: [CommonModule, RouterModule, HeaderComponent, LayoutModule, SidebarComponent],
+    imports: [CommonModule, RouterModule, LayoutModule, SidebarComponent],
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss']
 })
