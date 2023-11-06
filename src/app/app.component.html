@@ -1,0 +1,5 @@
+@if(users$ | async; as users){
+  <pre>{{users | json}}</pre>
+} @else {
+  <p>no users</p>
+}
